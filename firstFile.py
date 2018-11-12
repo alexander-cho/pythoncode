@@ -34,38 +34,38 @@ def takeOrder():
     total5 = 0
     while(True):
 
-        order = input("Which burger would you like? ")
+        order = int(input("Which burger would you like? "))
 
-        if(order == "0"):
+        if(order == 0):
             print("Thanks!")
             break
-        elif(order > "5" or order < "0"):
+        elif(order > 5 or order < 0):
             print("Please Select a valid option")
             break
 
         quantity = int(input("How many would you like? "))
 
-        if order == "1":
+        if order == 1:
             total1 = quantity * DE_ANZA_BURGER
             quantity1 += 1
             quantity1 = quantity1 * quantity
             continue
-        elif order == "2":
+        elif order == 2:
             total2 = quantity * BACON_CHEESE
             quantity2 += 1
             quantity2 = quantity2 * quantity
             continue
-        elif order == "3":
+        elif order == 3:
             total3 = quantity * MUSHROOM_SWISS
             quantity3 += 1
             quantity3 = quantity3 * quantity
             continue
-        elif order == "4":
+        elif order == 4:
             total4 = quantity * WESTERN_BURGER
             quantity4 += 1
             quantity4 = quantity4 * quantity
             continue
-        elif order == "5":
+        elif order == 5:
             total5 = quantity * DON_CALI_BURGER
             quantity5 += 1
             quantity5 = quantity5 * quantity
