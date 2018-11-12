@@ -1,193 +1,87 @@
-print("yes working")
-wdjoiawjdiowaj
-adjiowaj
-awaiohdoiwa
+DE_ANZA_BURGER = 5.25
+BACON_CHEESE = 5.75
+MUSHROOM_SWISS = 5.95
+WESTERN_BURGER = 5.95
+DON_CALI_BURGER = 5.95
 
-#alex remove the useless stuff in the file
-
-def seconds_difference(time_1, time_2):
-    """ (number, number) -> number
-
-    Return the number of seconds later that a time in seconds
-    time_2 is than a time in seconds time_1.
-
-    >>> seconds_difference(1800.0, 3600.0)
-    1800.0
-    >>> seconds_difference(3600.0, 1800.0)
-    -1800.0
-    >>> seconds_difference(1800.0, 2160.0)
-    360.0
-    >>> seconds_difference(1800.0, 1800.0)
-    0.0
-    """
-
-    return (time_2 - time_1)
+TAX = 1.09
 
 
-def hours_difference(time_1, time_2):
-    """ (number, number) -> float
-
-    Return the number of hours later that a time in seconds
-    time_2 is than a time in seconds time_1.
-
-    >>> hours_difference(1800.0, 3600.0)
-    0.5
-    >>> hours_difference(3600.0, 1800.0)
-    -0.5
-    >>> hours_difference(1800.0, 2160.0)
-    0.1
-    >>> hours_difference(1800.0, 1800.0)
-    0.0
-    """
-
-    return ((time_2 / 3600) - (time_1 / 3600))
+def main():
+    displayMenu()
+    takeOrder()
+    studentOrStaff()
 
 
-
-def to_float_hours(hours, minutes, seconds):
-    """ (int, int, int) -> float
-
-    Return the total number of hours in the specified number
-    of hours, minutes, and seconds.
-
-    Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
-
-    >>> to_float_hours(0, 15, 0)
-    0.25
-    >>> to_float_hours(2, 45, 9)
-    2.7525
-    >>> to_float_hours(1, 0, 36)
-    1.01
-    """
-
-    return (float(hours) + float(minutes / 60 ) + float(seconds / 3600))
+def displayMenu():
+    print("De Anza Burger: $5.25. Enter 1.")
+    print("Bacon Cheese: $5.75. Enter 2.")
+    print("Mushroom Swiss: $5.25. Enter 3.")
+    print("Western Burger: $5.25. Enter 4.")
+    print("Don Cali Burger: $5.25. Enter 5.")
 
 
+def takeOrder():
+    quantity1 = 0
+    quantity2 = 0
+    quantity3 = 0
+    quantity4 = 0
+    quantity5 = 0
+    total1 = 0
+    total2 = 0
+    total3 = 0
+    total4 = 0
+    total5 = 0
+    while True:
+        order = input("Which burger would you like? ")
+        quantity = int(input("How many would you like? "))
+        if order == "1":
+            total1 = quantity * DE_ANZA_BURGER
+            quantity1 += 1
+            quantity1 = quantity1 * quantity
+            continue
+        elif order == "2":
+            total2 = quantity * BACON_CHEESE
+            quantity2 += 1
+            quantity2 = quantity2 * quantity
+            continue
+        elif order == "3":
+            total3 = quantity * MUSHROOM_SWISS
+            quantity3 += 1
+            quantity3 = quantity3 * quantity
+            continue
+        elif order == "4":
+            total4 = quantity * WESTERN_BURGER
+            quantity4 += 1
+            quantity4 = quantity4 * quantity
+            continue
+        elif order == "5":
+            total5 = quantity * DON_CALI_BURGER
+            quantity5 += 1
+            quantity5 = quantity5 * quantity
+            continue
+        elif order == "6":
+            break
+    print(quantity1, quantity2, quantity3, quantity4, quantity5)
+    print(total1, total2, total3, total4, total5)
+    grandTotal = total1 + total2 + total3 + total4 + total5
+    return (grandTotal)
 
 
-def to_24_hour_clock(hours):
-    """ (number) -> number
-
-    hours is a number of hours since midnight. Return the
-    hour as seen on a 24-hour clock.
-
-    Precondition: hours >= 0
-
-    >>> to_24_hour_clock(24)
-    0
-    >>> to_24_hour_clock(48)
-    0
-    >>> to_24_hour_clock(25)
-    1
-    >>> to_24_hour_clock(4)
-    4
-    >>> to_24_hour_clock(28.5)
-    4.5
-    """
-
-    return hours % 24
+def studentOrStaff():
+    studentOrStaff = input("Are you a student or staff??: ")
+    if studentOrStaff == "staff":
+        tax = TAX
+    elif studentOrStaff == "student":
+        tax = 1
+    print(tax)
+    return (tax)
 
 
-### Write your get_hours function definition here:
-
-def get_hours(hours):
-    """ (number) -> number
-    (int) -> int
-
-    hours is a number of seconds that the user entered. Will return
-    the number of hours that have passed as an integer.
-
-    >>> get_hours(3800)
-    1
-    >>> get_hours(7300)
-    2
-    """
-
-    return (int(hours / 3600))
+main()
 
 
 
 
-### Write your get_minutes function definition here:
 
-def get_minutes(minutes):
-    """ (numnber) -> number
-    (int) -> int
-
-    minutes is the number of seconds that the user has entered. Will return
-    the number of minutes that elapsed since midnight.
-
-    >>> get_minutes(3800)
-    3
-
-    """
-
-    return ((minutes/60)%60)
-
-
-
-### Write your get_seconds function definition here:
-
-def get_seconds(seconds):
-    """ (number) -> number
-    (int) -> int
-
-    seconds is the number of seconds that the user has entered. Will return
-    the number of seconds that elapsed since midnight.
-
-    >>>get_seconds(3800)
-    20
-    """
-    return(seconds%60)
-
-
-
-def time_to_utc(utc_offset, time):
-    """ (number, float) -> float
-
-    Return time at UTC+0, where utc_offset is the number of hours away from
-    UTC+0.
-
-    >>> time_to_utc(+0, 12.0)
-    12.0
-    >>> time_to_utc(+1, 12.0)
-    11.0
-    >>> time_to_utc(-1, 12.0)
-    13.0
-    >>> time_to_utc(-11, 18.0)
-    5.0
-    >>> time_to_utc(-1, 0.0)
-    1.0
-    >>> time_to_utc(-1, 23.0)
-    0.0
-    """
-
-    return(time - utc_offset) % 24
-
-
-
-def time_from_utc(utc_offset, time):
-    """ (number, float) -> float
-
-    Return UTC time in time zone utc_offset.
-
-    >>> time_from_utc(+0, 12.0)
-    12.0
-    >>> time_from_utc(+1, 12.0)
-    13.0
-    >>> time_from_utc(-1, 12.0)
-    11.0
-    >>> time_from_utc(+6, 6.0)
-    12.0
-    >>> time_from_utc(-7, 6.0)
-    23.0
-    >>> time_from_utc(-1, 0.0)
-    23.0
-    >>> time_from_utc(-1, 23.0)
-    22.0
-    >>> time_from_utc(+1, 23.0)
-    0.0
-    """
-
-    return(time + utc_offset) % 24
 
