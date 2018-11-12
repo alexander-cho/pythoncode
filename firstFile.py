@@ -75,6 +75,7 @@ def takeOrder():
     print(quantity1, quantity2, quantity3, quantity4, quantity5)
     print(total1, total2, total3, total4, total5)
     grandTotal = total1 + total2 + total3 + total4 + total5
+    print(grandTotal)
     return (grandTotal)
 
 
