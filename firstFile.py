@@ -11,7 +11,7 @@ def main():
     displayMenu()
     orderTotal = takeOrder()
     taxRate = studentOrStaff()
-    print(calculateTotalAfter(orderTotal, taxRate))
+    orderTotalAfterTax = (calculateTotalAfter(orderTotal, taxRate))
 
 
 
@@ -77,6 +77,8 @@ def takeOrder():
     print(quantity1, quantity2, quantity3, quantity4, quantity5)
     print(total1, total2, total3, total4, total5)
     grandTotal = total1 + total2 + total3 + total4 + total5
+
+
     return (grandTotal)
 
 
@@ -85,12 +87,13 @@ def calculateTotalAfter(totalAmount, taxRate):
 
 
 def studentOrStaff():
+
     studentOrStaff = input("Are you a student or staff??: ")
     if studentOrStaff == "staff":
         tax = TAX
     elif studentOrStaff == "student":
         tax = 1
-    print(tax)
+
     return (tax)
 
 
