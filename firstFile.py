@@ -1,9 +1,9 @@
+#Constants
 DE_ANZA_BURGER = 5.25
 BACON_CHEESE = 5.75
 MUSHROOM_SWISS = 5.95
 WESTERN_BURGER = 5.95
 DON_CALI_BURGER = 5.95
-
 TAX = 1.09
 
 
@@ -32,9 +32,19 @@ def takeOrder():
     total3 = 0
     total4 = 0
     total5 = 0
-    while True:
+    while(True):
+
         order = input("Which burger would you like? ")
+
+        if(order == "0"):
+            print("Thanks!")
+            break
+        elif(order > "5" or order < "0"):
+            print("Please Select a valid option")
+            break
+
         quantity = int(input("How many would you like? "))
+
         if order == "1":
             total1 = quantity * DE_ANZA_BURGER
             quantity1 += 1
@@ -60,8 +70,8 @@ def takeOrder():
             quantity5 += 1
             quantity5 = quantity5 * quantity
             continue
-        elif order == "6":
-            break
+
+
     print(quantity1, quantity2, quantity3, quantity4, quantity5)
     print(total1, total2, total3, total4, total5)
     grandTotal = total1 + total2 + total3 + total4 + total5
