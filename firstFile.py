@@ -5,14 +5,23 @@ MUSHROOM_SWISS = 5.95
 WESTERN_BURGER = 5.95
 DON_CALI_BURGER = 5.95
 TAX = 1.09
+QUANTITY1 = 0
+QUANTITY2 = 0
+QUANTITY3 = 0
+QUANTITY4 = 0
+QUANTITY5 = 0
+TOTAL1 = 0
+TOTAL2 = 0
+TOTAL3 = 0
+TOTAL4 = 0
+TOTAL5 = 0
 
 
 def main():
     displayMenu()
     orderTotal = takeOrder()
     taxRate = studentOrStaff()
-    print(calculateTotalAfter(orderTotal, taxRate))
-
+    orderTotalAfterTax = (calculateTotalAfter(orderTotal, taxRate))
 
 
 def displayMenu():
@@ -24,16 +33,6 @@ def displayMenu():
 
 
 def takeOrder():
-    quantity1 = 0
-    quantity2 = 0
-    quantity3 = 0
-    quantity4 = 0
-    quantity5 = 0
-    total1 = 0
-    total2 = 0
-    total3 = 0
-    total4 = 0
-    total5 = 0
     while(True):
 
         order = int(input("Which burger would you like? "))
@@ -48,36 +47,38 @@ def takeOrder():
         quantity = int(input("How many would you like? "))
 
         if order == 1:
-            total1 = quantity * DE_ANZA_BURGER
-            quantity1 += 1
-            quantity1 = quantity1 * quantity
+            TOTAL1 = quantity * DE_ANZA_BURGER
+            QUANTITY1 += 1
+            quantity_ = QUANTITY1
+            QUANTITY1 = QUANTITY1 * quantity
             continue
         elif order == 2:
-            total2 = quantity * BACON_CHEESE
-            quantity2 += 1
-            quantity2 = quantity2 * quantity
+            TOTAL2 = quantity * BACON_CHEESE
+            QUANTITY2 += 1
+            QUANTITY2 = QUANTITY2 * quantity
             continue
         elif order == 3:
-            total3 = quantity * MUSHROOM_SWISS
-            quantity3 += 1
-            quantity3 = quantity3 * quantity
+            TOTAL3 = quantity * MUSHROOM_SWISS
+            QUANTITY3 += 1
+            QUANTITY3 = QUANTITY3 * quantity
             continue
         elif order == 4:
-            total4 = quantity * WESTERN_BURGER
-            quantity4 += 1
-            quantity4 = quantity4 * quantity
+            TOTAL4 = quantity * WESTERN_BURGER
+            QUANTITY4 += 1
+            QUANTITY4 = QUANTITY4 * quantity
             continue
         elif order == 5:
-            total5 = quantity * DON_CALI_BURGER
-            quantity5 += 1
-            quantity5 = quantity5 * quantity
+            TOTAL5 = quantity * DON_CALI_BURGER
+            QUANTITY5 += 1
+            QUANTITY5 = QUANTITY5 * quantity
             continue
 
 
-    print(quantity1, quantity2, quantity3, quantity4, quantity5)
-    print(total1, total2, total3, total4, total5)
-    grandTotal = total1 + total2 + total3 + total4 + total5
+    print(QUANTITY1, QUANTITY2, QUANTITY3, QUANTITY4, QUANTITY5)
+    print(TOTAL1, TOTAL2, TOTAL3, TOTAL4, TOTAL5)
+    grandTotal = TOTAL1 + TOTAL2 + TOTAL3 + TOTAL4 + TOTAL5
     print(grandTotal)
+
     return (grandTotal)
 
 
@@ -86,12 +87,13 @@ def calculateTotalAfter(totalAmount, taxRate):
 
 
 def studentOrStaff():
+
     studentOrStaff = input("Are you a student or staff??: ")
     if studentOrStaff == "staff":
         tax = TAX
     elif studentOrStaff == "student":
         tax = 1
-    print(tax)
+
     return (tax)
 
 
