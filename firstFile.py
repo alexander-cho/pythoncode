@@ -9,8 +9,10 @@ TAX = 1.09
 
 def main():
     displayMenu()
-    takeOrder()
-    studentOrStaff()
+    orderTotal = takeOrder()
+    taxRate = studentOrStaff()
+    print(calculateTotalAfter(orderTotal, taxRate))
+
 
 
 def displayMenu():
@@ -76,6 +78,10 @@ def takeOrder():
     print(total1, total2, total3, total4, total5)
     grandTotal = total1 + total2 + total3 + total4 + total5
     return (grandTotal)
+
+
+def calculateTotalAfter(totalAmount, taxRate):
+    return(totalAmount * taxRate)
 
 
 def studentOrStaff():
