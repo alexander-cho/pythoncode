@@ -11,6 +11,7 @@ TAX = 1.09
 def main():
     displayMenu()
     takeOrder()
+    print(round(0, 2))
 
 
 def displayMenu():
@@ -98,20 +99,25 @@ def studentOrStaff():
 
 def printBill(q1,p1,q2,p2,q3,p3,q4,p4,q5,p5,totalBeforeTax,Tax,totalAfterTax):
     print("You Ordered: ")
+    p1 = "%.2f" % p1
     print(str(q1) + " DeAnza Burger," + " $" + str(p1))
+    p2 = "%.2f" % p2
     print(str(q2) + " Bacon Cheese," +  " $" + str(p2))
+    p3 = "%.2f" % p3
     print(str(q3) + " Mushroom Swiss," + " $" + str(p3))
+    p4 = "%.2f" % p4
     print(str(q4) + " Western Burger," + " $" + str(p4))
+    p5 = "%.2f" % p5
     print(str(q5) + " Don Cali," + " $" + str(p5))
     print("")
     print("Cost Breakdown: ")
+    totalBeforeTax = "%.2f" % totalBeforeTax
     print("Total Before Tax: " + "$" + str(totalBeforeTax))
     if(Tax == 1):
         print("Tax Rate: " + "No Tax")
     else:
         print("Tax Rate: " + str(Tax) + "%")
-
-    print("Total Before Tax: " + "$" + str(totalBeforeTax))
+    totalAfterTax = "%.2f" % totalAfterTax
     print("Total After Tax: " + "$" + str(totalAfterTax))
 
 main()
